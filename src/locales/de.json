@@ -1,0 +1,192 @@
+{
+    "general": {
+        "logoText": "JD",
+        "toggleTheme": "Design umschalten",
+        "nav": [
+            {
+                "name": "Erfahrung",
+                "to": "experience"
+            },
+            {
+                "name": "Projekte",
+                "to": "projects"
+            },
+            {
+                "name": "Fähigkeiten",
+                "to": "skills"
+            },
+            {
+                "name": "Ausbildung",
+                "to": "education"
+            },
+            {
+                "name": "Kontakt",
+                "to": "contact"
+            }
+        ]
+    },
+    "hero": {
+        "greeting": "Hallo, ich bin",
+        "name": "John Doe",
+        "title": "Softwareentwickler",
+        "subtitle": "Full Stack Entwickler",
+        "description": "Ergebnisorientierter Softwareentwickler mit Erfahrung in modernen Frontend-Architekturen. Experte für den Aufbau skalierbarer, leistungsstarker Webanwendungen.",
+        "ctaButton": "Kontakt aufnehmen",
+        "copyEmailTooltip": "E-Mail-Adresse kopieren",
+        "social": {
+            "email": "hello@example.com",
+            "github": "https://github.com/example",
+            "linkedin": "https://www.linkedin.com/in/example"
+        }
+    },
+    "education": {
+        "title": "Ausbildung",
+        "degree": "Bachelor in Informatik",
+        "school": "Technische Universität",
+        "link": "https://example.com",
+        "visitWebsite": "Website besuchen",
+        "period": "September 2018 - Mai 2022"
+    },
+    "experience": {
+        "title": "Berufserfahrung",
+        "viewLink": "↗",
+        "items": [
+            {
+                "role": "Senior Frontend Entwickler",
+                "company": "Tech Corp",
+                "period": "Mär 2023 - Heute",
+                "location": "Remote",
+                "link": "https://example.com",
+                "description": "Leitung der End-to-End-Entwicklung einer Plattform mit Next.js. Entwicklung einer dynamischen Formular-Engine zur Reduzierung von Boilerplate um 40%. Implementierung nahtloser API-Integration.",
+                "skills": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Zustand"
+                ]
+            },
+            {
+                "role": "Softwareentwickler",
+                "company": "Startup Inc",
+                "period": "Apr 2021 - Feb 2023",
+                "location": "Remote",
+                "link": "https://example.com",
+                "description": "Co-Leitung der Entwicklung einer Multi-Tenant-Plattform. Architektur einer Monorepo-Struktur, die Code-Duplizierung eliminiert. Optimierung der Rendering-Engine.",
+                "skills": [
+                    "Next.js",
+                    "TypeScript",
+                    "Monorepo",
+                    "Performance"
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "title": "Ausgewählte Projekte",
+        "viewProject": "Projekt ansehen",
+        "internalTool": "Internes Tool",
+        "items": [
+            {
+                "title": "E-Commerce Plattform",
+                "role": "Lead Entwickler",
+                "tech": [
+                    "Next.js",
+                    "TypeScript",
+                    "Zod",
+                    "Tailwind CSS"
+                ],
+                "link": "https://example.com",
+                "description": "Eine umfassende E-Commerce-Plattform. Verantwortlich für die gesamte clientseitige Architektur mit Fokus auf Leistung und Barrierefreiheit.",
+                "icon": "Code2"
+            },
+            {
+                "title": "SaaS Dashboard",
+                "role": "Core Entwickler",
+                "tech": [
+                    "Next.js",
+                    "Turborepo",
+                    "Tailwind CSS"
+                ],
+                "link": "https://example.com",
+                "description": "Ein skalierbares Dashboard, mit dem Benutzer ihre Daten verwalten können. Bietet Multi-Tenancy- und White-Labeling-Funktionen.",
+                "icon": "Layers"
+            },
+            {
+                "title": "Mobile App",
+                "role": "Frontend Entwickler",
+                "tech": [
+                    "Flutter",
+                    "Dart",
+                    "JavaScript"
+                ],
+                "link": null,
+                "description": "Mobile- und Webanwendungen zur Überprüfung der Authentizität. Optimiert für das Scannen bei schlechten Lichtverhältnissen und Offline-Bedingungen.",
+                "icon": "Smartphone"
+            },
+            {
+                "title": "Management System",
+                "role": "Full Stack Entwickler",
+                "tech": [
+                    "Django",
+                    "PostgreSQL",
+                    "Python"
+                ],
+                "link": null,
+                "description": "Eine zentrale Managementplattform zur Steigerung der Effizienz. Optimiert den Fluss kritischer Informationen.",
+                "icon": "School"
+            }
+        ]
+    },
+    "skills": {
+        "title": "Fähigkeiten",
+        "categories": [
+            {
+                "title": "Frontend",
+                "skills": [
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "TailwindCSS",
+                    "HTML/CSS"
+                ]
+            },
+            {
+                "title": "Backend",
+                "skills": [
+                    "Node.js",
+                    "PostgreSQL",
+                    "Python"
+                ]
+            },
+            {
+                "title": "Tools",
+                "skills": [
+                    "Git",
+                    "Docker",
+                    "Linux",
+                    "Figma"
+                ]
+            }
+        ]
+    },
+    "contact": {
+        "title": "Kontakt",
+        "description": "Ich bin derzeit offen für neue Möglichkeiten. Ob Sie eine Frage haben oder einfach nur Hallo sagen wollen, ich werde mein Bestes geben, um mich bei Ihnen zu melden!",
+        "connectTitle": "Lassen Sie uns verbinden",
+        "connectDescription": "Zögern Sie nicht, mich direkt per E-Mail zu kontaktieren oder sich mit mir über soziale Medien zu verbinden.",
+        "labels": {
+            "email": "E-Mail",
+            "linkedin": "LinkedIn",
+            "github": "GitHub",
+            "copyEmail": "E-Mail kopieren"
+        },
+        "handles": {
+            "linkedin": "johndoe",
+            "github": "johndoe"
+        }
+    },
+    "footer": {
+        "rights": "Alle Rechte vorbehalten."
+    }
+}

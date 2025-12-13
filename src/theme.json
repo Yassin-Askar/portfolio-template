@@ -1,0 +1,86 @@
+{
+    "defaultTheme": "default",
+    "themes": {
+        "default": {
+            "assets": {
+                "logo": "/logo.svg",
+                "icon": "/logo.svg",
+                "lucideIcon": "Moon"
+            },
+            "background": "#09090b",
+            "foreground": "#fafafa",
+            "card": "#09090b",
+            "card-foreground": "#fafafa",
+            "popover": "#09090b",
+            "popover-foreground": "#fafafa",
+            "primary": "#e7b910",
+            "primary-foreground": "#18181b",
+            "secondary": "#27272a",
+            "secondary-foreground": "#fafafa",
+            "muted": "#27272a",
+            "muted-foreground": "#a1a1aa",
+            "accent": "#db1436",
+            "accent-foreground": "#fafafa",
+            "destructive": "#7f1d1d",
+            "destructive-foreground": "#fafafa",
+            "border": "#27272a",
+            "input": "#27272a",
+            "ring": "#d4d4d8",
+            "radius": "0.5rem"
+        },
+        "eagle": {
+            "assets": {
+                "logo": "/eagle-logo.svg",
+                "icon": "/eagle-logo.svg",
+                "lucideIcon": "Feather"
+            },
+            "background": "#0B2824",
+            "foreground": "#F2E8CF",
+            "card": "#133D36",
+            "card-foreground": "#F2E8CF",
+            "popover": "#0B2824",
+            "popover-foreground": "#F2E8CF",
+            "primary": "#C8AA6E",
+            "primary-foreground": "#0B2824",
+            "secondary": "#1A4D45",
+            "secondary-foreground": "#F2E8CF",
+            "muted": "#1A4D45",
+            "muted-foreground": "#8FA39F",
+            "accent": "#C8AA6E",
+            "accent-foreground": "#0B2824",
+            "destructive": "#7f1d1d",
+            "destructive-foreground": "#F2E8CF",
+            "border": "#1A4D45",
+            "input": "#1A4D45",
+            "ring": "#C8AA6E",
+            "radius": "0.5rem"
+        },
+        "apple-glass": {
+            "assets": {
+                "logo": "/apple-glass-logo.svg",
+                "icon": "/apple-glass-logo.svg",
+                "lucideIcon": "Command"
+            },
+            "background": "#000000",
+            "foreground": "#ffffff",
+            "card": "#1c1c1e",
+            "card-foreground": "#ffffff",
+            "popover": "#1c1c1e",
+            "popover-foreground": "#ffffff",
+            "primary": "#ffffff",
+            "primary-foreground": "#000000",
+            "secondary": "#2c2c2e",
+            "secondary-foreground": "#ffffff",
+            "muted": "#2c2c2e",
+            "muted-foreground": "#ebebf5",
+            "accent": "#0A84FF",
+            "accent-foreground": "#ffffff",
+            "destructive": "#ff453a",
+            "destructive-foreground": "#ffffff",
+            "border": "#2c2c2e",
+            "input": "#2c2c2e",
+            "ring": "#0A84FF",
+            "radius": "1.5rem"
+        }
+    }
+}

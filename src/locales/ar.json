@@ -1,0 +1,192 @@
+{
+    "general": {
+        "logoText": "JD",
+        "toggleTheme": "تبديل السمة",
+        "nav": [
+            {
+                "name": "الخبرة",
+                "to": "experience"
+            },
+            {
+                "name": "المشاريع",
+                "to": "projects"
+            },
+            {
+                "name": "المهارات",
+                "to": "skills"
+            },
+            {
+                "name": "التعليم",
+                "to": "education"
+            },
+            {
+                "name": "اتصل بي",
+                "to": "contact"
+            }
+        ]
+    },
+    "hero": {
+        "greeting": "مرحباً، أنا",
+        "name": "جون دو",
+        "title": "مهندس برمجيات",
+        "subtitle": "مطور Full Stack",
+        "description": "مهندس برمجيات موجه بالنتائج مع خبرة في بنيات الواجهة الأمامية الحديثة. خبير في بناء تطبيقات ويب قابلة للتوسع وعالية الأداء.",
+        "ctaButton": "تواصل معي",
+        "copyEmailTooltip": "نسخ البريد الإلكتروني",
+        "social": {
+            "email": "hello@example.com",
+            "github": "https://github.com/example",
+            "linkedin": "https://www.linkedin.com/in/example"
+        }
+    },
+    "education": {
+        "title": "التعليم",
+        "degree": "بكالوريوس علوم الحاسب",
+        "school": "جامعة التكنولوجيا",
+        "link": "https://example.com",
+        "visitWebsite": "زيارة الموقع",
+        "period": "سبتمبر 2018 - مايو 2022"
+    },
+    "experience": {
+        "title": "خبرة العمل",
+        "viewLink": "↗",
+        "items": [
+            {
+                "role": "مهندس واجهات أمامية أول",
+                "company": "شركة تقنية",
+                "period": "مارس 2023 - الحالي",
+                "location": "عن بعد",
+                "link": "https://example.com",
+                "description": "قيادة تطوير منصة باستخدام Next.js. هندسة محرك نماذج ديناميكي. تنفيذ تكامل واجهات برمجة التطبيقات.",
+                "skills": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "Zustand"
+                ]
+            },
+            {
+                "role": "مهندس برمجيات",
+                "company": "شركة ناشئة",
+                "period": "أبريل 2021 - فبراير 2023",
+                "location": "عن بعد",
+                "link": "https://example.com",
+                "description": "المشاركة في قيادة هندسة منصة متعددة المستأجرين. تحسين محرك العرض.",
+                "skills": [
+                    "Next.js",
+                    "TypeScript",
+                    "Monorepo",
+                    "Performance"
+                ]
+            }
+        ]
+    },
+    "projects": {
+        "title": "مشاريع مميزة",
+        "viewProject": "عرض المشروع",
+        "internalTool": "أداة داخلية",
+        "items": [
+            {
+                "title": "منصة تجارة إلكترونية",
+                "role": "مطور رئيسي",
+                "tech": [
+                    "Next.js",
+                    "TypeScript",
+                    "Zod",
+                    "Tailwind CSS"
+                ],
+                "link": "https://example.com",
+                "description": "منصة شاملة للتجارة الإلكترونية. مسؤول عن بنية العميل والوصول.",
+                "icon": "Code2"
+            },
+            {
+                "title": "لوحة تحكم SaaS",
+                "role": "مهندس أساسي",
+                "tech": [
+                    "Next.js",
+                    "Turborepo",
+                    "Tailwind CSS"
+                ],
+                "link": "https://example.com",
+                "description": "لوحة تحكم قابلة للتوسع لإدارة البيانات.",
+                "icon": "Layers"
+            },
+            {
+                "title": "تطبيق جوال",
+                "role": "مهندس واجهات أمامية",
+                "tech": [
+                    "Flutter",
+                    "Dart",
+                    "JavaScript"
+                ],
+                "link": null,
+                "description": "تطبيقات للتحقق من المصادقة.",
+                "icon": "Smartphone"
+            },
+            {
+                "title": "نظام إدارة",
+                "role": "مطور Full Stack",
+                "tech": [
+                    "Django",
+                    "PostgreSQL",
+                    "Python"
+                ],
+                "link": null,
+                "description": "منصة إدارة مركزية لتعزيز الكفاءة.",
+                "icon": "School"
+            }
+        ]
+    },
+    "skills": {
+        "title": "المهارات",
+        "categories": [
+            {
+                "title": "واجهة أمامية",
+                "skills": [
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "TailwindCSS",
+                    "HTML/CSS"
+                ]
+            },
+            {
+                "title": "واجهة خلفية",
+                "skills": [
+                    "Node.js",
+                    "PostgreSQL",
+                    "Python"
+                ]
+            },
+            {
+                "title": "الأدوات",
+                "skills": [
+                    "Git",
+                    "Docker",
+                    "Linux",
+                    "Figma"
+                ]
+            }
+        ]
+    },
+    "contact": {
+        "title": "تواصل معي",
+        "description": "أنا حالياً منفتح لفرص جديدة. تواصل معي في أي وقت!",
+        "connectTitle": "لنتواصل",
+        "connectDescription": "لا تتردد في التواصل مباشرة عبر البريد الإلكتروني أو وسائل التواصل الاجتماعي.",
+        "labels": {
+            "email": "البريد الإلكتروني",
+            "linkedin": "LinkedIn",
+            "github": "GitHub",
+            "copyEmail": "نسخ البريد الإلكتروني"
+        },
+        "handles": {
+            "linkedin": "جون دو",
+            "github": "جون دو"
+        }
+    },
+    "footer": {
+        "rights": "جميع الحقوق محفوظة."
+    }
+}
