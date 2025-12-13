@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import enData from '../locales/en.json';
 import arData from '../locales/ar.json';
 import deData from '../locales/de.json';
+import config from '../config.json';
 
 type Language = 'en' | 'ar' | 'de';
 type Direction = 'ltr' | 'rtl';
@@ -20,13 +21,20 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const [language, setLanguage] = useState<Language>(() => {
         if (typeof window !== 'undefined') {
             const saved = localStorage.getItem('language');
-            return (saved === 'en' || saved === 'ar' || saved === 'de') ? (saved as Language) : 'en';
+            const validLanguages = config.languages.map(l => l.value);
+            return (saved && validLanguages.includes(saved)) ? (saved as Language) : 'en';
         }
         return 'en';
     });
 
+    const localeMap: Record<Language, LocaleData> = {
+        en: enData,
+        ar: arData,
+        de: deData
+    };
+
     const direction = language === 'ar' ? 'rtl' : 'ltr';
-    const t = language === 'ar' ? arData : (language === 'de' ? deData : enData);
+    const t = localeMap[language] || enData;
 
     useEffect(() => {
         document.documentElement.setAttribute('lang', language);

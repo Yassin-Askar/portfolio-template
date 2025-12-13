@@ -1,15 +1,6 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Code2, Layers, Smartphone, School, HeartPulse } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
-
-const iconMap: { [key: string]: any } = {
-  Code2,
-  Layers,
-  Smartphone,
-  School,
-  HeartPulse
-};
-
 import SectionDivider from '../ui/SectionDivider';
 
 const Projects = () => {
@@ -31,7 +22,8 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {t.projects.items.map((project, index) => {
-            const IconComponent = iconMap[project.icon];
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const IconComponent = (LucideIcons as any)[project.icon];
             return (
               <motion.div
                 key={index}
@@ -69,7 +61,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
                     >
-                      {t.projects.viewProject} <ExternalLink size={16} />
+                      {t.projects.viewProject} <LucideIcons.ExternalLink size={16} />
                     </a>
                   ) : (
                     <span className="text-sm text-muted-foreground italic flex items-center gap-2">

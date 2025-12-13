@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import { Moon, Feather, Command } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -55,16 +55,10 @@ const ThemeSwitcher: React.FC = () => {
         );
     };
 
-    // Map of available icons for themes
-    const iconMap: Record<string, React.ElementType> = {
-        Moon,
-        Feather,
-        Command
-    };
-
     const getThemeIcon = () => {
         const iconName = themeAssets.lucideIcon || 'Moon';
-        const IconComponent = iconMap[iconName] || Moon;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const IconComponent = (LucideIcons as any)[iconName] || LucideIcons.Moon;
         return <IconComponent size={20} />;
     };
 

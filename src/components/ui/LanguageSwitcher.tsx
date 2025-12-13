@@ -2,18 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Languages, Check, ChevronsUpDown } from 'lucide-react';
+import config from '../../config.json';
 import { cn } from '../../lib/utils';
-
-const languages = [
-    { label: "English", value: "en" },
-    { label: "Deutsch", value: "de" },
-    { label: "العربية", value: "ar" },
-] as const;
 
 const LanguageSwitcher: React.FC = () => {
     const { language, setLanguage } = useLanguage();
     const [open, setOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const languages = config.languages;
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -54,7 +50,8 @@ const LanguageSwitcher: React.FC = () => {
                                 <button
                                     key={lang.value}
                                     onClick={() => {
-                                        setLanguage(lang.value);
+                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                        setLanguage(lang.value as any);
                                         setOpen(false);
                                     }}
                                     className={cn(
