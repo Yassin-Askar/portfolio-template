@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Languages, Check, ChevronsUpDown } from 'lucide-react';
-import config from '../../config.json';
+import Icon from './Icons';
+import config from '../../../data/config.json';
 import { cn } from '../../lib/utils';
 
 const LanguageSwitcher: React.FC = () => {
@@ -31,9 +31,9 @@ const LanguageSwitcher: React.FC = () => {
                 className="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-muted transition-colors text-primary border border-transparent hover:border-border"
                 aria-expanded={open}
             >
-                <Languages size={18} />
+                <Icon name="Languages" size={18} />
                 <span className="text-sm font-medium uppercase">{language}</span>
-                <ChevronsUpDown className="ml-1 h-3 w-3 shrink-0 opacity-50" />
+                <Icon name="ChevronsUpDown" className="ml-1 h-3 w-3 shrink-0 opacity-50" />
             </button>
 
             <AnimatePresence>
@@ -60,7 +60,7 @@ const LanguageSwitcher: React.FC = () => {
                                     )}
                                 >
                                     <span>{lang.label}</span>
-                                    {language === lang.value && <Check size={14} className="text-primary" />}
+                                    {language === lang.value && <Icon name="Check" size={14} className="text-primary" />}
                                 </button>
                             ))}
                         </div>

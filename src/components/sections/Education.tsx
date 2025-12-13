@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Calendar } from 'lucide-react';
+import Icon from '../ui/Icons';
 import { useLanguage } from '../../context/LanguageContext';
 
 import SectionDivider from '../ui/SectionDivider';
@@ -30,7 +30,7 @@ const Education = () => {
             >
                <div className="mb-6 md:mb-0">
                   <div className="flex items-center gap-3 mb-2">
-                     <GraduationCap className="text-primary" size={28} />
+                     <Icon name="GraduationCap" className="text-primary" size={28} />
                      <h3 className="text-xl text-foreground font-medium">{t.education.degree}</h3>
                      <p className="text-muted-foreground">{t.education.school}</p>
                      <a href={t.education.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 inline-block">
@@ -42,7 +42,7 @@ const Education = () => {
 
                <div className="text-start md:text-end">
                   <div className="flex items-center gap-2 text-muted-foreground mb-1 md:justify-end">
-                     <Calendar size={16} />
+                     <Icon name="Calendar" size={16} />
                      <span>{t.education.period}</span>
                   </div>
 

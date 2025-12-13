@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
-import { Menu, X } from 'lucide-react';
+import Icon from '../ui/Icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/utils';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
@@ -64,7 +64,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-primary hover:text-accent p-2"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <Icon name="X" size={24} /> : <Icon name="Menu" size={24} />}
             </button>
           </div>
         </div>

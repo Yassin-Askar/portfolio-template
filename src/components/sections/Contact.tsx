@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Copy, Check } from 'lucide-react';
+import Icon from '../ui/Icons';
 import { useLanguage } from '../../context/LanguageContext';
 
 import SectionDivider from '../ui/SectionDivider';
@@ -52,7 +52,7 @@ const Contact = () => {
                      <div className="flex items-center gap-2 w-full max-w-md">
                         <a href={`mailto:${t.hero.social.email}`} className="flex-1 flex items-center gap-4 p-4 bg-muted/50 rounded-lg border border-border hover:border-primary transition-colors group text-start">
                            <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                              <Mail className="text-primary" size={24} />
+                              <Icon name="Mail" className="text-primary" size={24} />
                            </div>
                            <div>
                               <div className="text-sm text-muted-foreground">{t.contact.labels.email}</div>
@@ -64,13 +64,13 @@ const Contact = () => {
                            className="p-4 bg-muted/50 rounded-lg border border-border hover:border-primary transition-colors hover:bg-primary/10 text-muted-foreground hover:text-primary h-[84px] w-[60px] flex items-center justify-center flex-shrink-0"
                            title={t.contact.labels.copyEmail}
                         >
-                           {copied ? <Check size={24} /> : <Copy size={24} />}
+                           {copied ? <Icon name="Check" size={24} /> : <Icon name="Copy" size={24} />}
                         </button>
                      </div>
 
                      <a href={t.hero.social.linkedin} target="_blank" rel="noopener noreferrer" className="w-full max-w-md flex items-center gap-4 p-4 bg-muted/50 rounded-lg border border-border hover:border-primary transition-colors group text-start">
                         <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                           <Linkedin className="text-primary" size={24} />
+                           <Icon name="Linkedin" className="text-primary" size={24} />
                         </div>
                         <div>
                            <div className="text-sm text-muted-foreground">{t.contact.labels.linkedin}</div>
@@ -80,7 +80,7 @@ const Contact = () => {
 
                      <a href={t.hero.social.github} target="_blank" rel="noopener noreferrer" className="w-full max-w-md flex items-center gap-4 p-4 bg-muted/50 rounded-lg border border-border hover:border-primary transition-colors group text-start">
                         <div className="p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                           <Github className="text-primary" size={24} />
+                           <Icon name="Github" className="text-primary" size={24} />
                         </div>
                         <div>
                            <div className="text-sm text-muted-foreground">{t.contact.labels.github}</div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
-import * as LucideIcons from 'lucide-react';
+import Icon from './Icons';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -57,9 +57,7 @@ const ThemeSwitcher: React.FC = () => {
 
     const getThemeIcon = () => {
         const iconName = themeAssets.lucideIcon || 'Moon';
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const IconComponent = (LucideIcons as any)[iconName] || LucideIcons.Moon;
-        return <IconComponent size={20} />;
+        return <Icon name={iconName} size={20} />;
     };
 
     return (

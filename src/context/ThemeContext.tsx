@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import themeConfig from '../theme.json';
+import themeConfig from '../../data/theme.json';
 
 type Theme = keyof typeof themeConfig.themes;
 

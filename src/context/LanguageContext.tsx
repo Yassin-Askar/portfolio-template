@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import enData from '../locales/en.json';
-import arData from '../locales/ar.json';
-import deData from '../locales/de.json';
-import config from '../config.json';
+import enData from '../../data/locales/en.json';
+import arData from '../../data/locales/ar.json';
+import deData from '../../data/locales/de.json';
+import config from '../../data/config.json';
 
 type Language = 'en' | 'ar' | 'de';
 type Direction = 'ltr' | 'rtl';

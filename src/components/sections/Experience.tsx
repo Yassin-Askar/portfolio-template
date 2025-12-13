@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, MapPin } from 'lucide-react';
+import Icon from '../ui/Icons';
 import { useLanguage } from '../../context/LanguageContext';
 
 import SectionDivider from '../ui/SectionDivider';
@@ -57,11 +57,11 @@ const Experience = () => {
                       </h3>
                       <div className="text-accent font-medium mb-1">{exp.company}</div>
                       <div className="flex items-center gap-4 text-xs text-muted-foreground md:hidden mb-2">
-                        <span className="flex items-center gap-1"><Calendar size={12} /> {exp.period}</span>
-                        <span className="flex items-center gap-1"><MapPin size={12} /> {exp.location}</span>
+                        <span className="flex items-center gap-1"><Icon name="Calendar" size={12} /> {exp.period}</span>
+                        <span className="flex items-center gap-1"><Icon name="MapPin" size={12} /> {exp.location}</span>
                       </div>
                       <div className="hidden md:flex items-center gap-4 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1"><MapPin size={12} /> {exp.location}</span>
+                        <span className="flex items-center gap-1"><Icon name="MapPin" size={12} /> {exp.location}</span>
                       </div>
                     </div>
                   </div>

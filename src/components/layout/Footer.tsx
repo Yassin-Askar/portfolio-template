@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, Check } from 'lucide-react';
+import Icon from '../ui/Icons';
 import { useLanguage } from '../../context/LanguageContext';
 
 const Footer = () => {
@@ -23,17 +23,17 @@ const Footer = () => {
           </div>
           <div className="flex space-x-6">
             <a href={t.hero.social.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-              <Github size={20} />
+              <Icon name="Github" size={20} />
             </a>
             <a href={t.hero.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-              <Linkedin size={20} />
+              <Icon name="Linkedin" size={20} />
             </a>
             <button
               onClick={handleCopyEmail}
               className="text-muted-foreground hover:text-primary transition-colors"
               title={t.hero.copyEmailTooltip}
             >
-              {copied ? <Check size={20} /> : <Mail size={20} />}
+              {copied ? <Icon name="Check" size={20} /> : <Icon name="Mail" size={20} />}
             </button>
           </div>
         </div>

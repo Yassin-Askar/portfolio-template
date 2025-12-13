@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import * as LucideIcons from 'lucide-react';
+import Icon from '../ui/Icons';
 import { useLanguage } from '../../context/LanguageContext';
 import SectionDivider from '../ui/SectionDivider';
 
@@ -22,8 +22,6 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {t.projects.items.map((project, index) => {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const IconComponent = (LucideIcons as any)[project.icon];
             return (
               <motion.div
                 key={index}
@@ -35,7 +33,7 @@ const Projects = () => {
               >
                 <div className="p-6 flex-grow">
                   <div className="mb-4 bg-secondary/50 p-3 rounded-lg w-fit group-hover:bg-primary/20 transition-colors">
-                    {IconComponent && <IconComponent size={40} className="text-primary" />}
+                    <Icon name={project.icon} size={40} className="text-primary" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
                     {project.title}
@@ -61,7 +59,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
                     >
-                      {t.projects.viewProject} <LucideIcons.ExternalLink size={16} />
+                      {t.projects.viewProject} <Icon name="ExternalLink" size={16} />
                     </a>
                   ) : (
                     <span className="text-sm text-muted-foreground italic flex items-center gap-2">

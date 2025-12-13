@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Check } from 'lucide-react';
+import Icon from '../ui/Icons';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -58,17 +58,17 @@ const Hero = () => {
               </a>
               <div className="flex items-center gap-4 px-4">
                 <a href={t.hero.social.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full">
-                  <Github size={24} />
+                  <Icon name="Github" size={24} />
                 </a>
                 <a href={t.hero.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full">
-                  <Linkedin size={24} />
+                  <Icon name="Linkedin" size={24} />
                 </a>
                 <button
                   onClick={handleCopyEmail}
                   className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full"
                   title={t.hero.copyEmailTooltip}
                 >
-                  {copied ? <Check size={24} /> : <Mail size={24} />}
+                  {copied ? <Icon name="Check" size={24} /> : <Icon name="Mail" size={24} />}
                 </button>
               </div>
             </motion.div>
