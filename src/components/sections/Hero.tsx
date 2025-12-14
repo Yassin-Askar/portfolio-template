@@ -88,7 +88,7 @@ const Hero = () => {
               >
                 <img
                   src={themeAssets.logo}
-                  alt="Yassin Askar Logo"
+                  alt={`${t.hero.name} Logo`}
                   className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                 />
               </motion.div>

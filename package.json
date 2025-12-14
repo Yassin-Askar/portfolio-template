@@ -3,7 +3,7 @@
   "private": false,
   "version": "1.0.0",
   "author": "Your Name",
-  "description": "A modern portfolio template built with React and Next.js technologies",
+  "description": "A modern portfolio template built with React and Vite technologies",
   "type": "module",
   "scripts": {
     "dev": "vite",
