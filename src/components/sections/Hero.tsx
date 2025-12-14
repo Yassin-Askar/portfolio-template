@@ -9,10 +9,14 @@ const Hero = () => {
   const { themeAssets } = useTheme();
   const { t } = useLanguage();
 
+  const hero = t?.hero;
+
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText(t.hero.social.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (hero?.social?.email) {
+      navigator.clipboard.writeText(hero.social.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
@@ -28,24 +32,30 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-xl text-accent font-medium mb-2">{t.hero.greeting}</h2>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-4">
-                {t.hero.name}
-              </h1>
-              <h3 className="text-2xl md:text-3xl text-muted-foreground font-medium">
-                {t.hero.title}
-                <span className="block md:inline text-primary"> | {t.hero.subtitle}</span>
-              </h3>
+              {hero?.greeting && <h2 className="text-xl text-accent font-medium mb-2">{hero.greeting}</h2>}
+              {hero?.name && (
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-4">
+                  {hero.name}
+                </h1>
+              )}
+              {(hero?.title || hero?.subtitle) && (
+                <h3 className="text-2xl md:text-3xl text-muted-foreground font-medium">
+                  {hero?.title}
+                  {hero?.subtitle && <span className="block md:inline text-primary"> | {hero.subtitle}</span>}
+                </h3>
+              )}
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-2xl leading-relaxed"
-            >
-              {t.hero.description}
-            </motion.p>
+            {hero?.description && (
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-lg text-muted-foreground max-w-2xl leading-relaxed"
+              >
+                {hero.description}
+              </motion.p>
+            )}
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -53,23 +63,31 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex flex-wrap gap-4 justify-center md:justify-start pt-4"
             >
-              <a href="#contact" className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20">
-                {t.hero.ctaButton}
-              </a>
+              {hero?.ctaButton && (
+                <a href="#contact" className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20">
+                  {hero.ctaButton}
+                </a>
+              )}
               <div className="flex items-center gap-4 px-4">
-                <a href={t.hero.social.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full">
-                  <Icon name="Github" size={24} />
-                </a>
-                <a href={t.hero.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full">
-                  <Icon name="Linkedin" size={24} />
-                </a>
-                <button
-                  onClick={handleCopyEmail}
-                  className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full"
-                  title={t.hero.copyEmailTooltip}
-                >
-                  {copied ? <Icon name="Check" size={24} /> : <Icon name="Mail" size={24} />}
-                </button>
+                {hero?.social?.github && (
+                  <a href={hero.social.github} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full">
+                    <Icon name="Github" size={24} />
+                  </a>
+                )}
+                {hero?.social?.linkedin && (
+                  <a href={hero.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full">
+                    <Icon name="Linkedin" size={24} />
+                  </a>
+                )}
+                {hero?.social?.email && (
+                  <button
+                    onClick={handleCopyEmail}
+                    className="text-muted-foreground hover:text-accent transition-colors p-2 hover:bg-accent/10 rounded-full"
+                    title={hero?.copyEmailTooltip || ''}
+                  >
+                    {copied ? <Icon name="Check" size={24} /> : <Icon name="Mail" size={24} />}
+                  </button>
+                )}
               </div>
             </motion.div>
           </div>
@@ -88,7 +106,7 @@ const Hero = () => {
               >
                 <img
                   src={themeAssets.logo}
-                  alt={`${t.hero.name} Logo`}
+                  alt={`${hero?.name || 'Portfolio'} Logo`}
                   className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                 />
               </motion.div>
@@ -101,3 +119,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

@@ -2,14 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import Icon from './Icons';
-import config from '../../../data/config.json';
 import { cn } from '../../lib/utils';
 
 const LanguageSwitcher: React.FC = () => {
-    const { language, setLanguage } = useLanguage();
+    const { language, setLanguage, availableLanguages } = useLanguage();
     const [open, setOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
-    const languages = config.languages;
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -23,6 +21,11 @@ const LanguageSwitcher: React.FC = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    // Don't render if no languages available or only one language
+    if (!availableLanguages || availableLanguages.length <= 1) {
+        return null;
+    }
 
     return (
         <div className="relative" ref={containerRef}>
@@ -46,12 +49,11 @@ const LanguageSwitcher: React.FC = () => {
                         className="absolute right-0 top-full z-50 w-[160px] rounded-md border bg-popover text-popover-foreground shadow-md p-1"
                     >
                         <div className="flex flex-col gap-1">
-                            {languages.map((lang) => (
+                            {availableLanguages.map((lang) => (
                                 <button
                                     key={lang.value}
                                     onClick={() => {
-                                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                        setLanguage(lang.value as any);
+                                        setLanguage(lang.value);
                                         setOpen(false);
                                     }}
                                     className={cn(
@@ -72,3 +74,4 @@ const LanguageSwitcher: React.FC = () => {
 };
 
 export default LanguageSwitcher;
+

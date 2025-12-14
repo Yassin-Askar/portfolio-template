@@ -10,7 +10,9 @@
         },
         {
             "label": "العربية",
-            "value": "ar"
+            "value": "ar",
+            "rtl": true
         }
-    ]
+    ],
+    "defaultLanguage": "en"
 }

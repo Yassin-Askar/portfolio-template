@@ -7,6 +7,11 @@ import ThemeSwitcher from '../ui/ThemeSwitcher';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import { useLanguage } from '../../context/LanguageContext';
 
+interface NavLink {
+  name?: string;
+  to?: string;
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -20,7 +25,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = t.general.nav;
+  const navLinks: NavLink[] = t?.general?.nav || [];
 
   return (
     <nav
@@ -33,22 +38,24 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 cursor-pointer">
             <Link to="hero" smooth={true} duration={500} className="text-2xl font-bold text-primary tracking-tighter">
-              {t.general.logoText}<span className="text-accent">.</span>
+              {t?.general?.logoText || 'Portfolio'}<span className="text-accent">.</span>
             </Link>
           </div>
 
           <div className="hidden md:block">
             <div className="ltr:ml-10 rtl:mr-10 flex items-center space-x-8 rtl:space-x-reverse">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.to}
-                  smooth={true}
-                  duration={500}
-                  className="text-muted-foreground hover:text-accent px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors"
-                >
-                  {link.name}
-                </Link>
+                link?.name && link?.to && (
+                  <Link
+                    key={link.name}
+                    to={link.to}
+                    smooth={true}
+                    duration={500}
+                    className="text-muted-foreground hover:text-accent px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <div className="flex items-center gap-2">
                 <ThemeSwitcher />
@@ -80,16 +87,18 @@ const Navbar = () => {
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.to}
-                  smooth={true}
-                  duration={500}
-                  onClick={() => setIsOpen(false)}
-                  className="text-muted-foreground hover:text-accent block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                >
-                  {link.name}
-                </Link>
+                link?.name && link?.to && (
+                  <Link
+                    key={link.name}
+                    to={link.to}
+                    smooth={true}
+                    duration={500}
+                    onClick={() => setIsOpen(false)}
+                    className="text-muted-foreground hover:text-accent block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
             </div>
           </motion.div>
@@ -100,3 +109,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

@@ -7,6 +7,13 @@ import SectionDivider from '../ui/SectionDivider';
 const Education = () => {
    const { t } = useLanguage();
 
+   const education = t?.education;
+
+   // Hide section if no data
+   if (!education?.title) {
+      return null;
+   }
+
    return (
       <section id="education" className="py-12 md:py-20">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +24,7 @@ const Education = () => {
                transition={{ duration: 0.5 }}
                className="text-center mb-16"
             >
-               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{t.education.title}</h2>
+               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{education.title}</h2>
                <SectionDivider />
             </motion.div>
 
@@ -31,22 +38,25 @@ const Education = () => {
                <div className="mb-6 md:mb-0">
                   <div className="flex items-center gap-3 mb-2">
                      <Icon name="GraduationCap" className="text-primary" size={28} />
-                     <h3 className="text-xl text-foreground font-medium">{t.education.degree}</h3>
-                     <p className="text-muted-foreground">{t.education.school}</p>
-                     <a href={t.education.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 inline-block">
-                        {t.education.visitWebsite}
-                     </a>
+                     {education.degree && <h3 className="text-xl text-foreground font-medium">{education.degree}</h3>}
+                     {education.school && <p className="text-muted-foreground">{education.school}</p>}
+                     {education.link && education.visitWebsite && (
+                        <a href={education.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 inline-block">
+                           {education.visitWebsite}
+                        </a>
+                     )}
                   </div>
                </div>
 
 
-               <div className="text-start md:text-end">
-                  <div className="flex items-center gap-2 text-muted-foreground mb-1 md:justify-end">
-                     <Icon name="Calendar" size={16} />
-                     <span>{t.education.period}</span>
+               {education.period && (
+                  <div className="text-start md:text-end">
+                     <div className="flex items-center gap-2 text-muted-foreground mb-1 md:justify-end">
+                        <Icon name="Calendar" size={16} />
+                        <span>{education.period}</span>
+                     </div>
                   </div>
-
-               </div>
+               )}
             </motion.div>
          </div>
       </section>
@@ -54,3 +64,4 @@ const Education = () => {
 };
 
 export default Education;
+
