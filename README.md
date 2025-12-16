@@ -73,6 +73,7 @@ This template is configured entirely through JSON files, ensuring you never have
 data/
 ├── <b>config.json</b>       # ⚙️ Global settings (languages, etc.)
 ├── <b>theme.json</b>        # 🎨 Color palettes, fonts, logos
+├── <b>meta.json</b>         # 🔍 SEO, defaults, and social media tags
 ├── <b>icons.json</b>        # 🧩 Icon name-to-file mappings
 └── <b>locales/</b>          # 📝 All text content (one file per language)
     ├── en.json
@@ -119,6 +120,15 @@ We map icon names to files to keep usage simple.
     "CoolIcon": "/icons/cool-icon.svg"
     ```
 3.  Use `"CoolIcon"` anywhere icons are supported in your data files.
+
+### 4. 🔍 SEO & Metadata
+Make the site truly yours by updating `data/meta.json`. This controls what shows up in Google search results and when sharing on social media.
+
+- **Title & Description**: Your page title and summary.
+- **Social Tags**: Open Graph (Facebook/LinkedIn) and Twitter card settings.
+- **JSON-LD**: Structured data for rich search results.
+- **Theme Color**: Browser toolbar color.
+
 
 ## 📦 Deployment
 
