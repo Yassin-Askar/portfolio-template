@@ -1,7 +1,50 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import themeConfig from '../../data/theme.json';
+const FALLBACK_themeConfig = {
+    defaultTheme: "default",
+    themes: {
+        "default": {
+            assets: {
+                "logo": "/logo.svg",
+                "icon": "/logo.svg",
+                "lucideIcon": "Moon"
+            },
+            "background": "#09090b",
+            "foreground": "#fafafa",
+            "card": "#09090b",
+            "card-foreground": "#fafafa",
+            "popover": "#09090b",
+            "popover-foreground": "#fafafa",
+            "primary": "#e7b910",
+            "primary-foreground": "#18181b",
+            "secondary": "#27272a",
+            "secondary-foreground": "#fafafa",
+            "muted": "#27272a",
+            "muted-foreground": "#a1a1aa",
+            "accent": "#db1436",
+            "accent-foreground": "#fafafa",
+            "destructive": "#7f1d1d",
+            "destructive-foreground": "#fafafa",
+            "border": "#27272a",
+            "input": "#27272a",
+            "ring": "#d4d4d8",
+            "radius": "0.5rem"
+        }
+    }
+};
 
-type Theme = keyof typeof themeConfig.themes;
+// Use glob to import optionally (prevents build error if file is missing)
+const themeModules = import.meta.glob('../../data/theme.json', { eager: true });
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let themeConfig: any = Object.values(themeModules)[0] || FALLBACK_themeConfig;
+
+// Ensure themeConfig has at least the default structure
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+themeConfig = (themeConfig as any).default || themeConfig;
+if (!themeConfig.themes || !themeConfig.defaultTheme) {
+    themeConfig = { ...FALLBACK_themeConfig, ...themeConfig };
+}
+
+type Theme = string; // Relaxed type to allow fallback handling without strict key checks against the JSON file
 
 interface ThemeContextType {
     theme: Theme;
@@ -64,6 +107,13 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
 
     useEffect(() => {
+        // Fallback to default if theme is missing from config
+        if (!themeConfig.themes[currentTheme]) {
+            console.warn(`Theme "${currentTheme}" is not defined in data/theme.json. Reverting to default.`);
+            setCurrentTheme(themeConfig.defaultTheme as Theme);
+            return;
+        }
+
         const theme = themeConfig.themes[currentTheme];
 
         // Inject CSS variables
@@ -95,7 +145,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 theme: currentTheme,
                 setTheme: setCurrentTheme,
                 availableThemes: Object.keys(themeConfig.themes) as Theme[],
-                themeAssets: themeConfig.themes[currentTheme].assets
+                themeAssets: themeConfig.themes[currentTheme]?.assets || themeConfig.themes[themeConfig.defaultTheme as Theme].assets
             }}
         >
             {children}

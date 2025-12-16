@@ -65,13 +65,11 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     const [locales, setLocales] = useState<Record<string, LocaleData>>({});
     const [isLoading, setIsLoading] = useState(true);
-    const [failedLanguages, setFailedLanguages] = useState<string[]>([]);
 
     // Load all locale files on mount
     useEffect(() => {
         const loadLocales = async () => {
             const loadedLocales: Record<string, LocaleData> = {};
-            const failures: string[] = [];
 
             for (const lang of availableLanguages) {
                 const loader = localeLoaders[lang.value];
@@ -81,18 +79,15 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                         loadedLocales[lang.value] = module.default || module;
                     } catch (error) {
                         console.warn(`Failed to load locale: ${lang.value}`, error);
-                        loadedLocales[lang.value] = {};
-                        failures.push(lang.value);
+                        // Do NOT set to empty object, leave undefined so fallback triggers
                     }
                 } else {
                     console.warn(`No locale module found for: ${lang.value}`);
-                    loadedLocales[lang.value] = {};
-                    failures.push(lang.value);
+                    // Do NOT set to empty object, leave undefined so fallback triggers
                 }
             }
 
             setLocales(loadedLocales);
-            setFailedLanguages(failures);
             setIsLoading(false);
         };
 
@@ -110,7 +105,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     // Get current locale, fallback to empty object if not loaded
     const t = useMemo(() => {
-        return locales[language] || locales[defaultLanguage] || {};
+        return locales[language] || locales[defaultLanguage] || FALLBACK_LOCALE;
     }, [locales, language]);
 
     useEffect(() => {
@@ -124,39 +119,45 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         return null;
     }
 
-    // Show error if current language failed to load
-    if (failedLanguages.includes(language)) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-red-50 text-red-900 p-8 text-center font-sans">
-                <div className="max-w-xl mx-auto border-2 border-red-200 bg-white p-8 rounded-xl shadow-xl">
-                    <h2 className="text-3xl font-bold mb-4">⚠️ Configuration Error</h2>
-                    <p className="text-lg mb-6">
-                        The language <strong>"{language}"</strong> is listed in <code>data/config.json</code>,
-                        but its translation file <code>data/locales/{language}.json</code> could not be found.
-                    </p>
-                    <div className="text-left bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm font-mono mb-6">
-                        <p className="mb-2 text-gray-600 font-bold">To fix this:</p>
-                        <ol className="list-decimal list-inside space-y-1">
-                            <li>Check if <code>data/locales/{language}.json</code> exists.</li>
-                            <li>Or remove the "{language}" entry from <code>data/config.json</code>.</li>
-                        </ol>
-                    </div>
-                    <button
-                        onClick={() => window.location.reload()}
-                        className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
-                    >
-                        Reload Page
-                    </button>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage, direction, t, availableLanguages }}>
             {children}
         </LanguageContext.Provider>
     );
+};
+
+const FALLBACK_LOCALE = {
+    general: {
+        logoText: "Port.",
+        toggleTheme: "Toggle Theme",
+        nav: [
+            { name: "Experience", to: "experience" },
+            { name: "Projects", to: "projects" },
+            { name: "Skills", to: "skills" },
+            { name: "Education", to: "education" },
+            { name: "Contact", to: "contact" }
+        ]
+    },
+    hero: {
+        greeting: "Hello, I'm",
+        name: "Developer",
+        title: "Software Engineer",
+        description: "Portfolio content is missing. Please check data/locales/.",
+        ctaButton: "Contact Me",
+        social: {}
+    },
+    experience: { title: "Experience", items: [] },
+    projects: { title: "Projects", items: [] },
+    skills: { title: "Skills", categories: [] },
+    education: { title: "Education" },
+    contact: {
+        title: "Contact",
+        description: "Get in touch.",
+        labels: { email: "Email", linkedin: "LinkedIn", github: "GitHub" },
+        handles: {}
+    },
+    footer: { rights: "All rights reserved." }
 };
 
 export const useLanguage = () => {

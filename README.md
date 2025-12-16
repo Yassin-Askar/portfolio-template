@@ -16,21 +16,30 @@ Welcome! This is a modern portfolio template that I'm using, and you can easily 
 
 Here is a glimpse into the design and structure of the project:
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="./img/s1v2.png" alt="Portfolio Screenshot 1" width="100%" />
-  <img src="./img/s2v2.png" alt="Portfolio Screenshot 2" width="48%" />
-  <img src="./img/s3v2.png" alt="Portfolio Screenshot 3" width="48%" />
-</div>
+<table width="100%">
+  <tr>
+    <td colspan="2">
+      <img src="./img/s1v2.png" alt="Portfolio Screenshot 1" width="100%" /> 
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="./img/s2v2.png" alt="Portfolio Screenshot 2" width="100%" />
+    </td>
+    <td width="50%">
+      <img src="./img/s3v2.png" alt="Portfolio Screenshot 3" width="100%" />
+    </td>
+  </tr>
+</table>
 
 <br />
 
 ## ✨ Key Features
 
-- **⚡ Blazing Fast Performance**: Built on Vite for near-instant HMR (Hot Module Replacement) and optimized production builds.
-- **🎨 Modern Aesthetics**: A fully themable UI with support for Glassmorphism and multiple color palettes (Default, Eagle, Apple Glass).
-- **📱 Mobile-First Design**: Responsive layouts that offer a native-app-like feel on smaller screens.
-- **🌍 Global Ready**: Comprehensive I18n support for **English**, **German**, and **Arabic** (including full RTL layout support).
-- **🔧 Zero-Code Content**: Content is separated from logic; update your portfolio by simply editing JSON files in the `data/` folder.
+- **🎨 Fully Customizable Themes**: The design is 100% editable. You can easily tweak existing styles or add completely new themes.
+- **🌍 Dynamic Languages**: Built to be global. Add, update, or remove any language you want without complex coding.
+- **📱 Mobile-First Design**: Responsive layouts that look great on any device, from phones to desktops.
+- **🔧 Easy Content Management**: Update all your portfolio data (projects, skills, text) just by editing simple JSON files.
 
 ---
 
@@ -62,13 +71,18 @@ This template is configured entirely through JSON files, ensuring you never have
 
 <pre>
 data/
-├── <b>config.json</b>       # Toggle features & languages
-├── <b>theme.json</b>        # Colors & logo paths
-├── <b>icons.json</b>        # Icon mappings
-└── <b>locales/</b>          # Text content (en, de, ar)
+├── <b>config.json</b>       # ⚙️ Global settings (languages, etc.)
+├── <b>theme.json</b>        # 🎨 Color palettes, fonts, logos
+├── <b>icons.json</b>        # 🧩 Icon name-to-file mappings
+└── <b>locales/</b>          # 📝 All text content (one file per language)
     ├── en.json
     └── ...
 </pre>
+
+### ⚠️ Important: JSON Rules
+
+**Don't Touch Keys:** Only edit the text on the right side of the colon (the values).
+
 
 ### 1. 🌍 Managing Languages
 Control which languages your portfolio supports in `data/config.json`.

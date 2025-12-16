@@ -16,9 +16,17 @@ const Icon = ({ name, size = 24, className = "" }: IconProps) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const iconPath = (iconsData as any)[name];
     const [svgContent, setSvgContent] = useState<string | null>(iconCache[name] || null);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
-        if (!name || !iconPath) return;
+        if (!name) return;
+
+        // Check if icon exists in mapping
+        if (!iconPath) {
+            console.warn(`Icon "${name}" is not defined in data/icons.json`);
+            setError(true);
+            return;
+        }
 
         if (iconCache[name]) {
             setSvgContent(iconCache[name]);
@@ -26,8 +34,12 @@ const Icon = ({ name, size = 24, className = "" }: IconProps) => {
         }
 
         fetch(iconPath)
-            .then(res => res.text())
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.text();
+            })
             .then(text => {
+                // ... existing parser logic ...
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(text, 'image/svg+xml');
                 const svg = doc.querySelector('svg');
@@ -42,12 +54,38 @@ const Icon = ({ name, size = 24, className = "" }: IconProps) => {
                     iconCache[name] = processed;
                     setSvgContent(processed);
                 } else {
-                    iconCache[name] = text;
-                    setSvgContent(text);
+                    throw new Error('Invalid SVG');
                 }
             })
-            .catch(err => console.error(`Failed to load icon: ${name}`, err));
+            .catch(err => {
+                console.error(`Failed to load icon: ${name} from ${iconPath}`, err);
+                setError(true);
+            });
     }, [name, iconPath, size, className]);
+
+    if (error || (!svgContent && !iconPath)) {
+        return (
+            <span
+                style={{
+                    width: size,
+                    height: size,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: '#fee2e2',
+                    color: '#ef4444',
+                    border: '1px border #fca5a5',
+                    borderRadius: '4px',
+                    fontSize: Math.max(10, size / 2),
+                    fontWeight: 'bold',
+                    cursor: 'help'
+                }}
+                title={`Missing icon: ${name}`}
+            >
+                ?
+            </span>
+        );
+    }
 
     if (!svgContent) {
         return <span style={{ width: size, height: size, display: 'inline-block' }} />;
