@@ -3,11 +3,16 @@ import { useLanguage } from '../../context/LanguageContext';
 
 import SectionDivider from '../ui/SectionDivider';
 
+interface SkillCategory {
+  title?: string;
+  skills?: string[];
+}
+
 const Skills = () => {
   const { t } = useLanguage();
 
   const skills = t?.skills;
-  const categories = skills?.categories;
+  const categories = skills?.categories as SkillCategory[];
 
   // Hide section if no data
   if (!skills?.title || !categories?.length) {
@@ -39,7 +44,7 @@ const Skills = () => {
               className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl p-6 hover:shadow-[0_0_20px_-5px_hsl(var(--accent)/0.3)] hover:border-accent/50 transition-all duration-300"
             >
               {category.title && <h3 className="text-xl font-bold text-foreground mb-6 text-center">{category.title}</h3>}
-              {category.skills?.length > 0 && (
+              {category.skills && category.skills.length > 0 && (
                 <div className="flex flex-wrap justify-center gap-3">
                   {category.skills.map((skill) => (
                     <span

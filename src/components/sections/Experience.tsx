@@ -4,11 +4,21 @@ import { useLanguage } from '../../context/LanguageContext';
 
 import SectionDivider from '../ui/SectionDivider';
 
+interface ExperienceItem {
+  period?: string;
+  role?: string;
+  company?: string;
+  link?: string;
+  location?: string;
+  description?: string;
+  skills?: string[];
+}
+
 const Experience = () => {
   const { t } = useLanguage();
 
   const experience = t?.experience;
-  const items = experience?.items;
+  const items = experience?.items as ExperienceItem[];
 
   // Hide section if no data
   if (!experience?.title || !items?.length) {
@@ -86,7 +96,7 @@ const Experience = () => {
                     </p>
                   )}
 
-                  {exp.skills?.length > 0 && (
+                  {exp.skills && exp.skills.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {exp.skills.map((skill) => (
                         <span key={skill} className="px-2.5 py-0.5 rounded-full bg-secondary text-secondary-foreground text-xs font-medium">

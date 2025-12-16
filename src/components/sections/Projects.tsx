@@ -3,11 +3,20 @@ import Icon from '../ui/Icons';
 import { useLanguage } from '../../context/LanguageContext';
 import SectionDivider from '../ui/SectionDivider';
 
+interface ProjectItem {
+  icon?: string;
+  title?: string;
+  role?: string;
+  description?: string;
+  tech?: string[];
+  link?: string;
+}
+
 const Projects = () => {
   const { t } = useLanguage();
 
   const projects = t?.projects;
-  const items = projects?.items;
+  const items = projects?.items as ProjectItem[];
 
   // Hide section if no data
   if (!projects?.title || !items?.length) {
@@ -56,7 +65,7 @@ const Projects = () => {
                       {project.description}
                     </p>
                   )}
-                  {project.tech?.length > 0 && (
+                  {project.tech && project.tech.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.tech.map((tech) => (
                         <span key={tech} className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded-md">

@@ -65,11 +65,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     const [locales, setLocales] = useState<Record<string, LocaleData>>({});
     const [isLoading, setIsLoading] = useState(true);
+    const [failedLanguages, setFailedLanguages] = useState<string[]>([]);
 
     // Load all locale files on mount
     useEffect(() => {
         const loadLocales = async () => {
             const loadedLocales: Record<string, LocaleData> = {};
+            const failures: string[] = [];
 
             for (const lang of availableLanguages) {
                 const loader = localeLoaders[lang.value];
@@ -80,14 +82,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                     } catch (error) {
                         console.warn(`Failed to load locale: ${lang.value}`, error);
                         loadedLocales[lang.value] = {};
+                        failures.push(lang.value);
                     }
                 } else {
                     console.warn(`No locale module found for: ${lang.value}`);
                     loadedLocales[lang.value] = {};
+                    failures.push(lang.value);
                 }
             }
 
             setLocales(loadedLocales);
+            setFailedLanguages(failures);
             setIsLoading(false);
         };
 
@@ -117,6 +122,34 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     // Show nothing while loading locales to prevent flash
     if (isLoading) {
         return null;
+    }
+
+    // Show error if current language failed to load
+    if (failedLanguages.includes(language)) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-red-50 text-red-900 p-8 text-center font-sans">
+                <div className="max-w-xl mx-auto border-2 border-red-200 bg-white p-8 rounded-xl shadow-xl">
+                    <h2 className="text-3xl font-bold mb-4">⚠️ Configuration Error</h2>
+                    <p className="text-lg mb-6">
+                        The language <strong>"{language}"</strong> is listed in <code>data/config.json</code>,
+                        but its translation file <code>data/locales/{language}.json</code> could not be found.
+                    </p>
+                    <div className="text-left bg-gray-50 p-4 rounded-lg border border-gray-200 text-sm font-mono mb-6">
+                        <p className="mb-2 text-gray-600 font-bold">To fix this:</p>
+                        <ol className="list-decimal list-inside space-y-1">
+                            <li>Check if <code>data/locales/{language}.json</code> exists.</li>
+                            <li>Or remove the "{language}" entry from <code>data/config.json</code>.</li>
+                        </ol>
+                    </div>
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
+                    >
+                        Reload Page
+                    </button>
+                </div>
+            </div>
+        );
     }
 
     return (
